@@ -7,6 +7,7 @@ import { Entypo } from '@expo/vector-icons';
 
 export default function App() {
 const [darkMode, setDarkMode] = useState(false)
+const buttons = ['AC', 'DEL', '%', '/', 7, 8, 9, '*', 4, 5, 6, '-', 3, 2, 1, '+', 0, '.', '+/-', '=']  
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,8 @@ const styles = StyleSheet.create({
   },
   results: {
     backgroundColor: darkMode ? "#282f3b" : "#f5f5f5",
-    width: '328%',
+    width: '20%',
+    marginRight: '15%',
     minHeight: 280,
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
@@ -38,11 +40,29 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 25, 
+  },
+  buttons: {
+    width: '20%',
+    marginRight: '15%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  button: {
+    borderColor: darkMode ? "#3f4d5b" : "#e5e5e5",
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 90,
+    minHeight: 90, 
+    flex: 2,
+  },
+  content: {
+    alignItems: 'center',
+    alignContent: 'center',
   }
 });
 
   return (
-    <View>
+    <View style={styles.content}>
       <View style={styles.results}>
         <TouchableOpacity style={styles.themeButton}>
           <Entypo name={darkMode ? "light-up" : 'moon'} size={24} color={darkMode ? "white" : 'black'}
@@ -51,7 +71,16 @@ const styles = StyleSheet.create({
         <Text style={styles.resultText}>2 + 2 = 5</Text>
       </View>
       <View style={styles.buttons}>
-
+        {buttons.map((button) => 
+        button === '=' ?
+        <TouchableOpacity key={button} style={styles.button}>
+          <Text>{button}</Text>
+        </TouchableOpacity>
+        :
+        <TouchableOpacity key={button} style={styles.button}>
+          <Text>{button}</Text>
+        </TouchableOpacity>
+        )}
       </View>
     </View>
   );
