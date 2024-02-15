@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   },
   button: {
     borderColor: darkMode ? "#3f4d5b" : "#e5e5e5",
+    borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 90,
@@ -73,11 +74,12 @@ const styles = StyleSheet.create({
       <View style={styles.buttons}>
         {buttons.map((button) => 
         button === '=' ?
-        <TouchableOpacity key={button} style={styles.button}>
+        <TouchableOpacity key={button} style={[styles.button, {backgroundColor: '#9dbc7b'}]}>
           <Text>{button}</Text>
         </TouchableOpacity>
         :
-        <TouchableOpacity key={button} style={styles.button}>
+        <TouchableOpacity key={button} style={[styles.button, {backgroundColor: typeof(button) 
+          === 'number' ? darkMode === true ? '#303946' : '#fff' : darkMode === true ? '#414853' : '#ededed'}]}>
           <Text>{button}</Text>
         </TouchableOpacity>
         )}
