@@ -10,12 +10,6 @@ const [darkMode, setDarkMode] = useState(false)
 const buttons = ['AC', 'DEL', '%', '/', 7, 8, 9, '*', 4, 5, 6, '-', 3, 2, 1, '+', 0, '.', '+/-', '=']  
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   results: {
     backgroundColor: darkMode ? "#282f3b" : "#f5f5f5",
     width: '20%',
@@ -26,9 +20,11 @@ const styles = StyleSheet.create({
 
   },
   resultText: {
+    //backgroundColor: darkMode ? '#282f38' : '#f5f5f5',
     margin: 10,
     fontSize: 25,
-    color: darkMode ? "#fff" : "#000",
+    color: darkMode ? '#f5f5f5' : '#282f38',
+    fontSize: 32,
   },
   themeButton: {
     alignSelf: 'flex-start',
@@ -59,6 +55,10 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     alignContent: 'center',
+  },
+  textButton: {
+    color: darkMode ? '#b5b7bb' : '#7c7c7c',
+    fontSize: 17,
   }
 });
 
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
         {buttons.map((button) => 
         button === '=' ?
         <TouchableOpacity key={button} style={[styles.button, {backgroundColor: '#9dbc7b'}]}>
-          <Text>{button}</Text>
+          <Text style={[styles.textButton, {color: 'white', fontSize:22}]}>{button}</Text>
         </TouchableOpacity>
         :
         <TouchableOpacity key={button} style={[styles.button, {backgroundColor: typeof(button) 
           === 'number' ? darkMode === true ? '#303946' : '#fff' : darkMode === true ? '#414853' : '#ededed'}]}>
-          <Text>{button}</Text>
+          <Text style={styles.textButton}>{button}</Text>
         </TouchableOpacity>
         )}
       </View>
